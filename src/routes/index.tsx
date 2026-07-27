@@ -29,7 +29,16 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
+      { property: "og:site_name", content: "Simples Corretora" },
+      { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      {
+        name: "keywords",
+        content:
+          "consórcio de imóvel, consórcio de veículo, consórcio de maquinário, seguro de vida, seguro auto, corretora de seguros, simulação de consórcio",
+      },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
@@ -45,6 +54,20 @@ export const Route = createFileRoute("/")({
               acceptedAnswer: { "@type": "Answer", text: item.a },
             })),
           ),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "InsuranceAgency",
+          name: "Simples Corretora",
+          description,
+          url: "/",
+          areaServed: "BR",
+          priceRange: "$$",
+          telephone: "+55 0800 050 5500",
+          sameAs: ["https://wa.me/5508000505500"],
         }),
       },
     ],
